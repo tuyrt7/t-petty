@@ -1,0 +1,39 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/iv_img_splash"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+    />
+    <!--android:background="@mipmap/app_launcher"-->
+    <TextView
+        android:id="@+id/tv_version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="25dp"
+        android:layout_marginRight="80dp"
+        android:gravity="center_horizontal"
+        android:textColor="#FFF"
+        android:visibility="visible"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_splash_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+    >
+
+        <com.aviconics.petrobot.petrobotbody.view.CustomVideoView
+            android:id="@+id/cvv_sp_guide"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+        />
+
+    </RelativeLayout>
+
+</RelativeLayout>

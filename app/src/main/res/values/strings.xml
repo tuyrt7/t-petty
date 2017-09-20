@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Pet</string>
+
+    <!-- ** zxing -->
+    <string name="str_scan_title">扫一扫</string>
+    <string name="str_open_light">开启闪光灯</string>
+    <string name="str_close_light">关闭闪光灯</string>
+    <string name="str_scan_hint">取景框对准二维码, 即可自动扫描</string>
+    <string name="str_editphoto_wrapper_title">照片</string>
+
+    <!--push msg-->
+    <string name="push_msg">触发监控,设备正在录像...</string>
+
+    <!--ac 云通信下行-->
+    <string name="device_isInUsing" >设备使用中，请稍候…</string>
+
+
+    <!--音乐播放返回信息-->
+    <string name="usb_not_insert">U盘未插入，请先插入U盘!</string>
+    <string name="no_url_music_in_sd">内置音乐出错</string>
+    <string name="no_url_music_in_usb">外置音乐出错</string>
+    <string name="no_url_music">媒体文件不存在</string>
+    <string name="video_not_play_when_call">播放器表示好忙呀~无法分身播视频哦</string>
+    <string name="usb_not_have_music">请在U盘music文件夹添加音乐</string>
+
+    <!--视频播放返回信息-->
+    <string name="usb_not_insert_video">无视频，请确认U盘已插入，且视频文件存在</string>
+    <string name="usb_not_have_video">请确认U盘中存在要播放的视频文件</string>
+
+    <!--喂食录音 ac 存储文件夹-->
+    <string name="bucket">PETBOT</string>
+
+    <!--食盒反馈-->
+    <string name="foodbox_reply_msg">零食盒盖已打开，暂时无法进行投食操作</string>
+    <string name="turn_reply_msg">零食盒盖已打开，暂时无法进行旋转操作</string>
+</resources>

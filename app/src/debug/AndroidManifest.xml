@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.aviconics.petrobot.petrobotbody">
+
+    <!-- ** ac permission-->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+
+    <!-- ** hx permission-->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!--<uses-permission android:name="android.permission.INTERNET" />-->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!--<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <!--<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />-->
+    <!--<uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />-->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <!-- ** bugly permission-->
+    <!--<uses-permission android:name="android.permission.READ_PHONE_STATE" />-->
+    <!--<uses-permission android:name="android.permission.INTERNET" />-->
+    <!--<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />-->
+    <!--<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />-->
+    <uses-permission android:name="android.permission.READ_LOGS" />
+
+    <!--** zxing permission-->
+    <!--<uses-permission android:name="android.permission.CAMERA" />-->
+    <uses-feature android:name="android.hardware.camera" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera.front" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera.front.autofocus" android:required="false"/>
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <!--锁屏权限-->
+    <!--<uses-permission android:name="android.permission.WAKE_LOCK" />-->
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+
+    <!--弹窗-->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
+
+    <!-- sd卡读写权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <!--格式化sd卡-->
+    <uses-permission android:name="android.permission.MOUNT_FORMAT_FILESYSTEMS"/>
+
+    <application
+        android:name=".app.App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <!-- ** ac 配置环境  **  -->
+        <!-- [Required] 进入AbleCloud管理控制台,对应"产品管理->主域" -->
+        <meta-data android:name="major-domain" android:value="zhonghangdianzi"/>
+        <!-- [Required] 进入AbleCloud管理控制台,对应"产品管理->主域ID" -->
+        <meta-data android:name="major-domain-id" android:value="771"/>
+        <!-- [Required] 进入AbleCloud管理控制台,对应"产品管理->产品列表->子域".注意,若subDomain为数字,则需在数字前面加\0 -->
+        <meta-data android:name="sub-domain" android:value="petbot"/>
+        <!-- [Required] 进入AbleCloud管理控制台,对应"产品管理->产品列表->子域ID" -->
+        <meta-data android:name="sub-domain-id" android:value="910"/>
+        <!-- [Required] 设备私钥,对应"产品管理->产品列表->点击管理->设备密钥->私钥" 若使用AbleCloud默认分配的密钥对，则填写默认密钥里的私钥，如选择设备独立密钥入库，则需要使用密钥生成工具自己生成公私钥并上传文件-->
+        <meta-data android:name="secret-key" android:value="B2D9177314536AFA27B51FEB370A2C98EC2C5678E15023A4A8F213C656C42DE9E7AE57A62FE46E04E265A3A7A2A406FBC59F09A2043FEDEA6D43580AB6D8596B4D49CCF5A4CE78A16A816BBA15B8D0970CD94342126EA9A455484CA01DB541533A4CA3A31684F09A44FD1EEB4914F0D5"/>
+
+        <!-- [Optional] 环境设置,默认值为0(0正式环境 1测试环境) -->
+        <meta-data android:name="mode" android:value="${ac_env_mode}"/>
+        <!-- [Optional] 地域设置,默认值为0(0北京地区 1东南亚地区 2华东地区 3北美地区 4中欧地区) -->
+        <meta-data android:name="region" android:value="0"/>
+        <!-- [Optional] 设备版本,格式为"1-0-0",不设置情况下默认值为"1-0-0",也可通过ACConfig进行设置 -->
+        <meta-data android:name="version" android:value="1-0-0"/>
+        <!-- [Optional] 加密方式,默认值为2(0不加密 1静态加密 2动态加密) -->
+        <meta-data android:name="security-mode" android:value="2"/>
+
+        <receiver android:name="com.accloud.clientservice.ACNetworkChangeReceiver"
+                  android:label="NetworkConnection">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+        </receiver>
+
+
+        <!--** 环信 配置唤醒 **-->
+        <meta-data
+            android:name="EASEMOB_APPKEY"
+            android:value="${em_app_key}"
+        />
+        <service android:name="com.hyphenate.chat.EMChatService" android:exported="true"/>
+        <service android:name="com.hyphenate.chat.EMJobService"
+                 android:permission="android.permission.BIND_JOB_SERVICE"
+                 android:exported="true"
+        />
+        <!-- 声明SDK所需的receiver -->
+        <receiver android:name="com.hyphenate.chat.EMMonitorReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED"/>
+                <data android:scheme="package"/>
+            </intent-filter>
+            <!-- 可选filter -->
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+
+
+        <activity android:name=".module.ui.activity.SplashActivity"
+                  android:screenOrientation="landscape"
+        >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".module.ui.activity.MainActivity"/>
+        <activity android:name=".zxing.activity.CaptureActivity" android:launchMode="singleTask"/>
+        <activity android:name=".module.ui.activity.RecorderActivity" android:launchMode="singleTask"/>
+        <activity android:name=".module.ui.activity.MoveShowActivity" android:launchMode="singleTask"/>
+
+        <!--** Service **-->
+        <service android:name=".module.service.SoundMonitorService"/>
+
+    </application>
+
+</manifest>
